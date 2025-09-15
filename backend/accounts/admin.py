@@ -8,7 +8,6 @@ class AccountAdmin(UserAdmin):
     ordering= ('-date_joined',)
     list_filter = ()
     filter_horizontal = ()
-
     search_fields = ('username', 'email_address')
 
 

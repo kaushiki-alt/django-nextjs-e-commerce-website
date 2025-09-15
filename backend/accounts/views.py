@@ -19,4 +19,3 @@ def register(request):
             products = Account.objects.all()
             serializer = AccountSerializer(products, many=True)
             return Response(serializer.data)
-
