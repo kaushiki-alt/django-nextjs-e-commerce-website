@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,3 +26,5 @@ urlpatterns = [
     path('store/', include('store.urls')),
     path('api/', include('accounts.urls')),
 ]
+if settings.DEBUG:  # only serve media files through Django in development
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

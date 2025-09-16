@@ -13,7 +13,7 @@ def product_list(request):
     if request.method == 'GET':
     # List all products
         products = Product.objects.all()
-        serializer = ProductSerializer(products, many=True)
+        serializer = ProductSerializer(products, many=True, context={'request': request})
         return Response(serializer.data)
     else:
         # add a product to product list
@@ -28,6 +28,6 @@ def product_list(request):
 @api_view(['GET'])
 def product(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    serializer = ProductSerializer(product, many=False)
+    serializer = ProductSerializer(product, many=False, context={'request': request})
     return Response(serializer.data)
 

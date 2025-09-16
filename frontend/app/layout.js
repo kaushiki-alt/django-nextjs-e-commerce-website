@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-
+import { CartProvider } from "@/Context/CartContext";
 import "./globals.css";
 
 // const geistSans = Geist({
@@ -23,7 +23,9 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className={`bg-bg-primary`}>
 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+  <CartProvider>
             {children}
+            </CartProvider>
         </ThemeProvider>
       </body>
     </html>
